@@ -1,4 +1,4 @@
-# 🎓 AI-Powered Learning Tutor for Rural Indian Students
+# 🎓 EduBuddy: An AI-Powered Learning Tutor for Rural Indian Students
 
 An adaptive, culturally-relevant AI tutor designed specifically for rural Indian students (Grades 1-5). Features bilingual support (English/Hindi), offline capabilities, and personalized learning plans.
 
@@ -206,7 +206,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Authors
 
-- Your Name - Initial work
+- Aaditya Singhal - Development
+- Aryan Kumar Pandey - Design
+- Aryan Kumar - Deployment
 
 ## 🙏 Acknowledgments
 
@@ -217,7 +219,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Support
 
-For support, email your-email@example.com or open an issue on GitHub.
+For support, email singhal26aaditya@gmail.com or open an issue on GitHub.
 
 ## 🎯 Mission
 

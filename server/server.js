@@ -1,7 +1,7 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/database');
+require('dotenv').config();
 
 const app = express();
 
@@ -9,7 +9,10 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allow all origins for now
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,26 +21,34 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/courses', require('./routes/courses'));
 app.use('/api/lessons', require('./routes/lessons'));
 app.use('/api/progress', require('./routes/progress'));
-app.use('/api/ai-tutor', require('./routes/aiTutor'));
-app.use('/api/assessment', require('./routes/assessmentRoutes'));
-app.use('/api/plan', require('./routes/planRoutes'));
+app.use('/api/assessment', require('./routes/assessment'));
 app.use('/api/adaptive', require('./routes/adaptiveRoutes'));
+app.use('/api/plan', require('./routes/planRoutes'));
 
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', message: 'AI Tutor Server Running' });
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Server is running' });
+});
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'AI Learning Tutor API' });
 });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({
-    message: 'Something went wrong!',
-    error: process.env.NODE_ENV === 'development' ? err.message : {}
-  });
+  res.status(500).json({ message: 'Something went wrong!', error: err.message });
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 AI Tutor Server running on port ${PORT}`);
-});
+
+// Only start server if not in Vercel
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 AI Tutor Server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel
+module.exports = app;

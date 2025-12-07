@@ -1,10 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, BookOpen, ExternalLink } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Calendar, BookOpen, ExternalLink } from "lucide-react";
 
 const PlanCard = ({ dayPlan }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -19,7 +19,7 @@ const PlanCard = ({ dayPlan }) => {
           {dayPlan.topic}
         </span>
       </div>
-      
+
       <div className="mb-4">
         <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 flex items-center">
           <BookOpen className="w-4 h-4 mr-1" /> Activities
@@ -38,7 +38,10 @@ const PlanCard = ({ dayPlan }) => {
           </h4>
           <div className="flex flex-wrap gap-2">
             {dayPlan.resources.map((resource, idx) => (
-              <span key={idx} className="text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-100">
+              <span
+                key={idx}
+                className="text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-100"
+              >
                 {resource}
               </span>
             ))}

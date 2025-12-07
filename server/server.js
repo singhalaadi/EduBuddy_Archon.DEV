@@ -10,7 +10,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: '*', // Allow all origins for now
+  origin: '*',
   credentials: true
 }));
 app.use(express.json());
@@ -21,7 +21,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/courses', require('./routes/courses'));
 app.use('/api/lessons', require('./routes/lessons'));
 app.use('/api/progress', require('./routes/progress'));
-app.use('/api/assessment', require('./routes/assessment'));
+app.use('/api/assessment', require('./routes/assessmentRoutes'));
 app.use('/api/adaptive', require('./routes/adaptiveRoutes'));
 app.use('/api/plan', require('./routes/planRoutes'));
 
@@ -43,10 +43,10 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-// Only start server if not in Vercel
-if (process.env.NODE_ENV !== 'production') {
+// Start server (works both locally and on Vercel)
+if (!module.parent) {
   app.listen(PORT, () => {
-    console.log(`🚀 AI Tutor Server running on port ${PORT}`);
+    console.log(`AI Tutor Server running on port ${PORT}`);
   });
 }
 

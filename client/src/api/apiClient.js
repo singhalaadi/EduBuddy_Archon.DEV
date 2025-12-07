@@ -9,7 +9,7 @@ const apiClient = axios.create({
     },
 });
 
-// Add a request interceptor to automatically include the auth token
+// Interceptor to add token
 apiClient.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
@@ -18,9 +18,7 @@ apiClient.interceptors.request.use(
         }
         return config;
     },
-    (error) => {
-        return Promise.reject(error);
-    }
+    (error) => Promise.reject(error)
 );
 
 export default apiClient;

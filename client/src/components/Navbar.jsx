@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Book, Trophy, User, Settings, LogOut } from 'lucide-react';
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Home, Book, Trophy, User, Settings, LogOut } from "lucide-react";
 
 const Navbar = ({ onLogout }) => {
   const navigate = useNavigate();
@@ -9,11 +9,11 @@ const Navbar = ({ onLogout }) => {
   const isActive = (path) => location.pathname === path;
 
   const navItems = [
-    { path: '/', icon: Home, label: 'Home' },
-    { path: '/subjects', icon: Book, label: 'Subjects' },
-    { path: '/rewards', icon: Trophy, label: 'Rewards' },
-    { path: '/profile', icon: User, label: 'Profile' },
-    { path: '/settings', icon: Settings, label: 'Settings' },
+    { path: "/", icon: Home, label: "Home" },
+    { path: "/subjects", icon: Book, label: "Subjects" },
+    { path: "/rewards", icon: Trophy, label: "Rewards" },
+    { path: "/profile", icon: User, label: "Profile" },
+    { path: "/settings", icon: Settings, label: "Settings" },
   ];
 
   return (
@@ -21,11 +21,16 @@ const Navbar = ({ onLogout }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
+          <div
+            className="flex items-center gap-3 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <div className="bg-blue-600 p-2 rounded-lg">
               <Book className="text-white w-6 h-6" />
             </div>
-            <span className="text-2xl font-bubble font-bold text-blue-900">EduBuddy</span>
+            <span className="text-2xl font-bubble font-bold text-blue-900">
+              EduBuddy
+            </span>
           </div>
 
           {/* Navigation Items */}
@@ -38,8 +43,8 @@ const Navbar = ({ onLogout }) => {
                   onClick={() => navigate(item.path)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                     isActive(item.path)
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-gray-50'
+                      ? "bg-blue-50 text-blue-600"
+                      : "text-gray-600 hover:bg-gray-50"
                   }`}
                 >
                   <Icon size={20} />
@@ -79,8 +84,8 @@ const Navbar = ({ onLogout }) => {
                 onClick={() => navigate(item.path)}
                 className={`flex flex-col items-center gap-1 p-2 rounded-lg ${
                   isActive(item.path)
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-600'
+                    ? "bg-blue-50 text-blue-600"
+                    : "text-gray-600"
                 }`}
               >
                 <Icon size={20} />

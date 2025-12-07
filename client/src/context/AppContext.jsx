@@ -1,10 +1,10 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from "react";
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [userGrade, setUserGrade] = useState('');
-  const [userSubject, setUserSubject] = useState('');
+  const [userGrade, setUserGrade] = useState("");
+  const [userSubject, setUserSubject] = useState("");
   const [questions, setQuestions] = useState([]);
   const [assessmentResults, setAssessmentResults] = useState(null);
   const [learningPlan, setLearningPlan] = useState(null);
